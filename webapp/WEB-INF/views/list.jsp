@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>[phonebook3]</h1>
+	<h1>[phonebook4]</h1>
 
 	<h2>전화번호 리스트</h2>
 
@@ -28,13 +28,13 @@
 				<td>${personVo.company}</td>
 			</tr>
 			<tr>
-				<td><a href="/phonebook3/phone/updateForm?personId=${personVo.personId}">[수정]</a></td>
-				<td><a href="/phonebook3/phone/delete?personId=${personVo.personId}">[삭제]</a></td>
+				<td><a href="/phonebook4/phone/updateForm?personId=${personVo.personId}">[수정]</a></td>
+				<td><a href="/phonebook4/phone/delete?personId=${personVo.personId}">[삭제]</a></td>
 			</tr>
 		</table>
 		<br>
 	</c:forEach>
 	<br>
-	<a href="/phonebook3/phone/writeForm">전화번호 등록폼</a>
+	<a href="/phonebook4/phone/writeForm">전화번호 등록폼</a>
 </body>
 </html>
