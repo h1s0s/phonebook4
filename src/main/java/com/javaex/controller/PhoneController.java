@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,8 +17,11 @@ import com.javaex.vo.PersonVo;
 @Controller
 @RequestMapping(value = "/phone")
 public class PhoneController {
+	
 	// 필드
-
+	@Autowired
+	private PhoneDao phoneDao;
+	
 	// 생성자
 
 	// 메소드 g/s
@@ -41,7 +45,7 @@ public class PhoneController {
 
 		PersonVo personVo = new PersonVo(name, hp, company);
 
-		new PhoneDao().personInsert(personVo);
+		phoneDao.personInsert(personVo);
 
 		return "redirect:/phone/list"; // localhost:8088/phonebook3
 	}
@@ -85,7 +89,7 @@ public class PhoneController {
 	public String Update(@ModelAttribute PersonVo personVo) {
 		System.out.println("PhoneController>update");
 
-		new PhoneDao().personUpdate(personVo);
+		phoneDao.personUpdate(personVo);
 
 		return "redirect:/phone/list";
 	}
@@ -94,7 +98,7 @@ public class PhoneController {
 	public String Delete(@RequestParam("personId") int personId) {
 		System.out.println("PhoneController>delete");
 
-		new PhoneDao().personDelete(personId);
+		phoneDao.personDelete(personId);
 
 		return "redirect:/phone/list";
 	}
