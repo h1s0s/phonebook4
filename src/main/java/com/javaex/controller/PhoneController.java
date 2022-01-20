@@ -64,7 +64,6 @@ public class PhoneController {
 		System.out.println("PhoneController>list");
 
 		// 다오에서 리스트를 가져온다
-		PhoneDao phoneDao = new PhoneDao();
 		List<PersonVo> personList = phoneDao.getPersonList();
 		System.out.println(personList.toString());
 
@@ -78,7 +77,7 @@ public class PhoneController {
 	public String UpdateForm(@RequestParam("personId") int personId, Model model) {
 		System.out.println("PhoneController>updateForm");
 
-		PersonVo personVo = new PhoneDao().getPerson(personId);
+		PersonVo personVo = phoneDao.getPerson(personId);
 
 		model.addAttribute("personVo", personVo);
 
