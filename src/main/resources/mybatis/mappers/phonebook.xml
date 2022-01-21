@@ -3,13 +3,13 @@
 
 <mapper namespace="phonebook">
 
-	<resultMap id="resultMapPersonVo" type="com.javaex.vo.PersonVo">
+	<resultMap id="resultMapPersonVo" type="PersonVo">
 		<result column="person_id" property="personId" />
 		<result column="name" property="name" />
 		<result column="hp" property="hp" />
 		<result column="company" property="company" />
 	</resultMap>
-	
+
 	<select id="selectOne" parameterType="int" resultMap="resultMapPersonVo">
 		<![CDATA[
 			select    person_id,
@@ -21,7 +21,7 @@
 		]]>
 	</select>
 
-	<select id="selectList" resultType="com.javaex.vo.PersonVo">
+	<select id="selectList" resultType="PersonVo">
 		<![CDATA[
 			select    person_id as personId,
 				      name,
@@ -32,7 +32,7 @@
 		]]>
 	</select>
 
-	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
+	<insert id="insert" parameterType="PersonVo">
 		<![CDATA[
 			insert into person
 			values (seq_person_id.nextval, #{name}, #{hp}, #{company})
@@ -46,7 +46,7 @@
 		]]>
 	</delete>
 
-	<update id="update" parameterType="com.javaex.vo.PersonVo">
+	<update id="update" parameterType="PersonVo">
 		<![CDATA[
 			update person
 			set	   name = #{name},
