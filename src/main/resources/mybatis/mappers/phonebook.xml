@@ -3,9 +3,16 @@
 
 <mapper namespace="phonebook">
 
-	<select id="selectOne" parameterType="int" resultType="com.javaex.vo.PersonVo">
+	<resultMap id="resultMapPersonVo" type="com.javaex.vo.PersonVo">
+		<result column="person_id" property="personId" />
+		<result column="name" property="name" />
+		<result column="hp" property="hp" />
+		<result column="company" property="company" />
+	</resultMap>
+	
+	<select id="selectOne" parameterType="int" resultMap="resultMapPersonVo">
 		<![CDATA[
-			select    person_id personid,
+			select    person_id,
 				      name,
 			          hp,
 			          company
@@ -13,10 +20,10 @@
 			where	  person_id = #{personId}
 		]]>
 	</select>
-	
+
 	<select id="selectList" resultType="com.javaex.vo.PersonVo">
 		<![CDATA[
-			select    person_id personid,
+			select    person_id as personId,
 				      name,
 			          hp,
 			          company
@@ -24,7 +31,7 @@
 			order by  person_id desc
 		]]>
 	</select>
-	
+
 	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
 		<![CDATA[
 			insert into person
@@ -38,7 +45,7 @@
 			where  person_id = #{personId}
 		]]>
 	</delete>
-	
+
 	<update id="update" parameterType="com.javaex.vo.PersonVo">
 		<![CDATA[
 			update person
